@@ -1,0 +1,22 @@
+version: "3"
+
+services:
+  marax-adapter:
+    build: .
+    container_name: marax-adapter
+    devices:
+      - /dev/ttyUSB0:/dev/ttyUSB0
+    volumes:
+      - marax-storage:/var/log/marax
+  telegraf:
+    # Pin to 1.14 - tailing log file doesn't work on 1.15
+    image: telegraf:1.14
+    container_name: telegraf
+    depends_on:
+      - marax-adapter
+    volumes:
+      - ./telegraf.conf:/etc/telegraf/telegraf.conf
+      - marax-storage:/var/log/marax
+
+volumes:
+  marax-storage:
