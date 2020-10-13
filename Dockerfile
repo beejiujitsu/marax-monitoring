@@ -1,4 +1,4 @@
-FROM alpine
+FROM arm32v6/alpine
 
 COPY timestamp-line /usr/local/bin/timestamp-line
 RUN chmod +x /usr/local/bin/timestamp-line
