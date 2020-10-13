@@ -2,7 +2,8 @@ version: "3"
 
 services:
   marax-adapter:
-    build: .
+    #build: .
+    image: laebshade/marax-telegraf-agent
     container_name: marax-adapter
     devices:
       - /dev/ttyUSB0:/dev/ttyUSB0
