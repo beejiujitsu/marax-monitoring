@@ -1,9 +1,9 @@
+---
 version: "3"
-
 services:
   marax-adapter:
     #build: .
-    image: laebshade/marax-telegraf-agent
+    image: laebshade/marax-adapter
     container_name: marax-adapter
     devices:
       - /dev/ttyUSB0:/dev/ttyUSB0
@@ -19,6 +19,5 @@ services:
     volumes:
       - ./telegraf.conf:/etc/telegraf/telegraf.conf
       - marax-storage:/var/log/marax
-
 volumes:
   marax-storage:
