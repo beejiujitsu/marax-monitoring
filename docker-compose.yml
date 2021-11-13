@@ -4,11 +4,12 @@ services:
   marax-adapter:
     #build: .
     image: laebshade/marax-adapter
-    container_name: marax-adapter
+    container_name: maraxadapter
     devices:
       - /dev/ttyUSB0:/dev/ttyUSB0
     volumes:
       - marax-storage:/var/log/marax
+    restart: always
   telegraf:
     # Pin to 1.14 - tailing log file doesn't work on 1.15
     # Use telegraf 1.14 image built for arm32v6 (Pi Zero W) compatibility
@@ -19,5 +20,6 @@ services:
     volumes:
       - ./telegraf.conf:/etc/telegraf/telegraf.conf
       - marax-storage:/var/log/marax
+    restart: always
 volumes:
   marax-storage:
