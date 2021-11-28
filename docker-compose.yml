@@ -11,9 +11,7 @@ services:
       - marax-storage:/var/log/marax
     restart: always
   telegraf:
-    # Pin to 1.14 - tailing log file doesn't work on 1.15
-    # Use telegraf 1.14 image built for arm32v6 (Pi Zero W) compatibility
-    image: laebshade/telegraf:arm32v6 #:1.14
+    image: telegraf
     container_name: telegraf
     depends_on:
       - marax-adapter
