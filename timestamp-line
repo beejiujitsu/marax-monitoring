@@ -2,7 +2,6 @@
 
 while read LINE; do
   if [ "$LINE" != "" ]; then
-  IFS=',' read -r -a fields <<< "$LINE"
   if echo "$LINE" | grep -q ",120," 2>/dev/null; then
     brewPriority="1"
     steamPriority="0"
