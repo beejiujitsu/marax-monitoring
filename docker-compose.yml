@@ -1,23 +1,22 @@
 ---
-version: "3"
 services:
   marax-adapter:
-    #build: .
-    image: laebshade/marax-adapter
     container_name: maraxadapter
     devices:
       - /dev/ttyUSB0:/dev/ttyUSB0
+    image: laebshade/marax-adapter
+    restart: always
     volumes:
       - marax-storage:/var/log/marax
-    restart: always
   telegraf:
-    image: telegraf
     container_name: telegraf
     depends_on:
       - marax-adapter
+    image: telegraf
+    restart: always
     volumes:
       - ./telegraf.conf:/etc/telegraf/telegraf.conf
       - marax-storage:/var/log/marax
-    restart: always
+version: '3'
 volumes:
-  marax-storage:
+  marax-storage: null
