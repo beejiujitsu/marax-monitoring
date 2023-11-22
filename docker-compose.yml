@@ -1,22 +1,47 @@
 ---
 services:
-  marax-adapter:
+  maraxadapter:
     container_name: maraxadapter
     devices:
       - /dev/ttyUSB0:/dev/ttyUSB0
-    image: laebshade/marax-adapter
+    #image: laebshade/marax-adapter
+    build: .
     restart: always
     volumes:
       - marax-storage:/var/log/marax
   telegraf:
     container_name: telegraf
     depends_on:
-      - marax-adapter
+      - maraxadapter
+      - influxdb
     image: telegraf
     restart: always
     volumes:
       - ./telegraf.conf:/etc/telegraf/telegraf.conf
       - marax-storage:/var/log/marax
+  influxdb:
+    container_name: influxdb
+    image: influxdb:1.8
+    ports:
+      - 8086:8086
+    restart: always
+    volumes:
+      - influxdb-storage:/var/lib/influxdb
+      - ./config/influxdb:/docker-entrypoint-initdb.d
+  grafana:
+    container_name: grafana
+    image: grafana/grafana
+    ports:
+      - 80:3000
+    depends_on:
+      - influxdb
+    restart: always
+    volumes:
+      - grafana-storage:/var/lib/grafana
+      - ./config/grafana/provisioning:/etc/grafana/provisioning
+      - ./config/grafana/dashboards:/var/lib/grafana/dashboards
 version: '3'
 volumes:
   marax-storage: null
+  influxdb-storage: null
+  grafana-storage: null
