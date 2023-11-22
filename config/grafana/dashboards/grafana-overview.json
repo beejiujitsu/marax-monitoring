@@ -55,6 +55,16 @@
                 }
               },
               "type": "value"
+            },
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "index": 2,
+                  "text": "Off"
+                }
+              },
+              "type": "special"
             }
           ],
           "thresholds": {
@@ -95,7 +105,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.2.1",
+      "pluginVersion": "10.2.2",
       "targets": [
         {
           "alias": "Mode",
@@ -248,7 +258,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.2.1",
+      "pluginVersion": "10.2.2",
       "targets": [
         {
           "alias": "Thermal coil",
@@ -390,7 +400,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "10.2.1",
+      "pluginVersion": "10.2.2",
       "targets": [
         {
           "alias": "",
@@ -497,7 +507,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "10.2.1",
+      "pluginVersion": "10.2.2",
       "targets": [
         {
           "alias": "Actual Temp",
@@ -1057,7 +1067,7 @@
       "type": "timeseries"
     }
   ],
-  "refresh": "5s",
+  "refresh": "auto",
   "schemaVersion": 38,
   "tags": [],
   "templating": {
@@ -1085,7 +1095,6 @@
   "timezone": "",
   "title": "Overview",
   "uid": "0VkxsAigz",
-  "version": 3,
+  "version": 5,
   "weekStart": ""
 }
-
