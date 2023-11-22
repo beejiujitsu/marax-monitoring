@@ -1,0 +1,2 @@
+#!/bin/sh
+truncate -s 0 /var/log/marax/marax.log

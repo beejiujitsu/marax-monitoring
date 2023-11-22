@@ -4,7 +4,6 @@ services:
     container_name: maraxadapter
     devices:
       - /dev/ttyUSB0:/dev/ttyUSB0
-    #image: laebshade/marax-adapter
     build: .
     restart: always
     volumes:
@@ -17,7 +16,7 @@ services:
     image: telegraf
     restart: always
     volumes:
-      - ./telegraf.conf:/etc/telegraf/telegraf.conf
+      - ./config/telegraf.conf:/etc/telegraf/telegraf.conf
       - marax-storage:/var/log/marax
   influxdb:
     container_name: influxdb
