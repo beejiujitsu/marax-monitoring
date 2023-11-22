@@ -1,0 +1,4 @@
+#!/bin/sh
+while read LINE; do
+  echo "$(date +%s),$LINE"
+done
