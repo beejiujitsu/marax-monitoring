@@ -3,7 +3,7 @@ services:
   maraxadapter:
     container_name: maraxadapter
     devices:
-      - /dev/ttyUSB0:/dev/ttyUSB0
+      - /dev:/dev
     build: .
     restart: always
     volumes:
